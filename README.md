@@ -1,11 +1,11 @@
 # NukDokPlex's Cogs
 A collection of cogs developed by NukDokPlex with various functions
 
-#Installation
+# Installation
 ``TODO``
 
-#Contact
+# Contact
 Use ``issues``
 
-#Credits
+# Credits
 NukDokPlex - [Website](https://nukdotcom.ru), [Blog](https://blog.nukdotcom.ru), [EMail](mailto:vik.titoff2014@yandex.ru)
