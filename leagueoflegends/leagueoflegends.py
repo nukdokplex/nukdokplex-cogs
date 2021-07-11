@@ -18,10 +18,28 @@ from apscheduler.triggers.interval import IntervalTrigger
 
 from random import Random
 
-
 from .log import log
 
-datadragon_version = "11.13.1"
+datadragon_version = "11.14.1"
+
+tiers_order = {
+    "IRON": 9,
+    "BRONZE": 8,
+    "SILVER": 7,
+    "GOLD": 6,
+    "PLATINUM": 5,
+    "DIAMOND": 4,
+    "MASTER": 3,
+    "GRANDMASTER": 2,
+    "CHALLENGER": 1,
+}
+
+ranks_order = {
+    "I": 1,
+    "II": 2,
+    "III": 3,
+    "IV": 4
+}
 
 _ = Translator("LeagueOfLegends", __file__)
 
@@ -80,7 +98,6 @@ class LeagueOfLegends(commands.Cog):
 
             summoner_id = config['summoner_id']
 
-
             if summoner_id is None or summoner_id == "":
                 # doesn't have summoner id - so get it from api
                 while True:
@@ -113,8 +130,9 @@ class LeagueOfLegends(commands.Cog):
                 try:
                     ranked_info = lol.league.by_summoner(config['region'], summoner_id)
 
-                    for i in range(0, len(ranked_info)-1):
-                        ranked_info[i]['summoner_name'] = config['summoner_name']
+                    for i, v in enumerate(ranked_info):
+                        ranked_info[i]['tier_int'] = tiers_order[ranked_info[i]['tier']]
+                        ranked_info[i]['rank_int'] = ranks_order[ranked_info[i]['rank']]
 
                     ranked_infos[user_id] = ranked_info
                     break
@@ -132,13 +150,11 @@ class LeagueOfLegends(commands.Cog):
         for guild_id in guilds.keys():
             guild = self.bot.get_guild(guild_id)
 
-
             current_messages = await self.config.guild(guild).current_messages()
             channel_id = await self.config.guild(guild).leaderboard_channel()
 
             if channel_id is not int and channel_id == -1:
                 continue
-
 
             if (await self.config.guild(guild).enable_leaderboard()) is not True:
                 continue
@@ -150,26 +166,56 @@ class LeagueOfLegends(commands.Cog):
                     del guild_summoners[user_id]
 
             channel = discord.utils.get(guild.text_channels, id=channel_id)
+            embed_colour = await self.bot.get_embed_color(channel)
             for message_id in current_messages:
                 try:
-                    channel.delete_messages(channel.get_partial_message(message_id=message_id))
+                    await channel.delete_messages([channel.get_partial_message(message_id=message_id)])
                 except Exception:
                     log.exception("Can't delete message from text channel (maybe no permission?)", exc_info=Exception)
 
             if len(guild_summoners) == 0:
                 continue
 
-            embed = Embed(title="Leaderboard")
+            # [{'leagueId': '6f6447e1-f58a-38be-a252-322a480e9867', 'queueType': 'RANKED_SOLO_5x5', 'tier': 'CHALLENGER',
+            #   'rank': 'I', 'summonerId': 'v6InAqLEJyqAn1q5BDXhBcFa7vwMDtTcijHlADRJa0o1', 'summonerName': 'BMPX',
+            #   'leaguePoints': 811, 'wins': 462, 'losses': 405, 'veteran': True, 'inactive': False, 'freshBlood': False,
+            #   'hotStreak': False},
+            #  {'leagueId': '374f3a69-5147-43e0-b193-219017cd737b', 'queueType': 'RANKED_FLEX_SR', 'tier': 'PLATINUM',
+            #   'rank': 'I', 'summonerId': 'v6InAqLEJyqAn1q5BDXhBcFa7vwMDtTcijHlADRJa0o1', 'summonerName': 'BMPX',
+            #   'leaguePoints': 58, 'wins': 81, 'losses': 51, 'veteran': False, 'inactive': False, 'freshBlood': False,
+            #   'hotStreak': False}]
 
-            i = 0
+            queues = ['RANKED_SOLO_5x5', 'RANKED_FLEX_SR']
+            current_messages = []
 
-            for user_id in guild_summoners.keys():
-                i += 1
-                embed.add_field(name=f"#{i}", value=guild_summoners[user_id][0]['summonerName'], inline=False)
+            for queue in queues:
+                embed = Embed(title=f"Leaderboard for {queue} queue", colour=embed_colour)
 
-            current_messages.clear()
+                queue_summoners = []
 
-            current_messages.append((await channel.send(embed)).id)
+                for guild_summoner in guild_summoners.keys():
+                    for q in guild_summoners[guild_summoner]:
+                        if q['queueType'] == queue:
+                            qu = q.copy()
+                            qu['discord_id'] = guild_summoner
+                            queue_summoners.append(qu)
+
+                queue_summoners = sorted(queue_summoners.copy(), key=lambda k: (k['tier_int'], k['rank_int']))
+
+                for i in range(0, 9):
+                    try:
+                        summoner = queue_summoners[i]
+                    except IndexError:
+                        break
+                    else:
+                        user = discord.utils.get(self.bot.users, id=summoner['discord_id'])
+                        embed.add_field(
+                            name=f"#{i+1}",
+                            value=f"{summoner['summonerName']} ({user.mention}) - {summoner['tier']} {summoner['rank']}",
+                            inline=False
+                        )
+
+                current_messages.append((await channel.send(embed=embed)).id)
 
             await self.config.guild(guild).current_messages.set(current_messages)
 
@@ -285,11 +331,15 @@ class LeagueOfLegends(commands.Cog):
             return
 
         lol = LolWatcher(api_key)
+
         try:
             summoner = lol.summoner.by_name(
                 summoner_name=summoner_name,
                 region=str.lower(region)
             )
+            await self.config.user(ctx.author).puuid.set(summoner['puuid'])
+            await self.config.user(ctx.author).account_id.set(summoner['accountId'])
+            await self.config.user(ctx.author).summoner_id.set(summoner['id'])
         except ApiError as err:
             global embed
             if err.response.status_code == 404:

@@ -1,9 +1,9 @@
 {
-    "AUTHOR" : "NukDokPlex",
-    "DESCRIPTION" : "League of Legends related commands to watch statistics, create leaderboards on servers and much more.",
-    "DISABLED" : false,
-    "SHORT" : "League of Legends related commands",
-    "NAME" : "League of Legends",
-    "TAGS" : ["league", "of", "legends", "leagueoflegends", "lol", "statistics", "leaderboard", "riot", "riotgames"],
-    "INSTALL_MSG" : "Installed successfuly!\nTo set Riot API key use command ``[p]set api leagueoflegends api_key,[YOUR_API_KEY]``.\nAuthor's website: https://nukdotcom.ru/"
+    "author" : ["NukDokPlex"],
+    "description" : "League of Legends related commands to watch statistics, create leaderboards on servers and much more.",
+    "disabled" : false,
+    "short" : "League of Legends related commands",
+    "name" : "League of Legends",
+    "tags" : ["league", "of", "legends", "leagueoflegends", "lol", "statistics", "leaderboard", "riot", "riotgames"],
+    "install_msg" : "Installed successfuly!\nTo set Riot API key use command ``[p]set api leagueoflegends api_key,[YOUR_API_KEY]``.\nAuthor's website: https://nukdotcom.ru/"
 }
