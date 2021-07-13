@@ -1,0 +1,44 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2021-07-13 03:45+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: NukDokPlex <vik.titoff2014@gmail.com>\n"
+"Language-Team: NukDokPlex <vik.titoff2014@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\osu\osu.py:21
+#, docstring
+msgid "osu! related commands."
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\osu\osu.py:42
+msgid "osu! cog has been successfully detach!"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\osu\osu.py:46
+#, docstring
+msgid "osu! related commands"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\osu\osu.py:52
+#, docstring
+msgid "set's your osu! nickname in bot settings"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\osu\osu.py:67
+msgid "Your name is set as \"{name}\""
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\osu\osu.py:71
+#, docstring
+msgid "clear's your osu! settings in this bot"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\osu\osu.py:76
+msgid "Your settings have been reset"
+msgstr ""

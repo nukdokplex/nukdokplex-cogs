@@ -43,6 +43,7 @@ ranks_order = {
 
 _ = Translator("LeagueOfLegends", __file__)
 
+
 @cog_i18n(_)
 class LeagueOfLegends(commands.Cog):
     """LeagueOfLegends API related commands."""
@@ -93,8 +94,8 @@ class LeagueOfLegends(commands.Cog):
             config = summoners[user_id]
 
             if config['summoner_name'] is None or config['summoner_name'] == "" or \
-                config['region'] is None or config['region'] == "":
-                continue # escape
+                    config['region'] is None or config['region'] == "":
+                continue  # escape
 
             summoner_id = config['summoner_id']
 
@@ -115,7 +116,11 @@ class LeagueOfLegends(commands.Cog):
                             # it's not quota exceed - skip
                             break
                     except Exception as err:
-                        log.exception(f"can't get summoner_id by leaderboard for {config['summoner_name']}#{config['region']}", exc_info=Exception)
+                        log.exception(
+                            "Can't get summoner_id for {name}#{region}"
+                                .format(name=config['summoner_name'], region=config['region']),
+                            exc_info=Exception
+                        )
                         break
 
             if summoner_id is None or summoner_id == "":
@@ -125,7 +130,6 @@ class LeagueOfLegends(commands.Cog):
             # now we need to get ranked info
             ranked_info = []
 
-            # {'id': 'v6InAqLEJyqAn1q5BDXhBcFa7vwMDtTcijHlADRJa0o1', 'accountId': 'Na5HRo2TcALrgLtWGlrJav9IeyfeAJuiGGGJPn2QUC9ht9o', 'puuid': 'AoQiI83Fptup1ZZxVTuLCt_4fGJAyD5v9-8niNHwRRlRhSEuV8CJIZtD5z1Wq5T6AkIMpe_m2nZPNQ', 'name': 'BMPX', 'profileIconId': 4987, 'revisionDate': 1625675786000, 'summonerLevel': 238}
             while True:
                 try:
                     ranked_info = lol.league.by_summoner(config['region'], summoner_id)
@@ -137,14 +141,18 @@ class LeagueOfLegends(commands.Cog):
                     ranked_infos[user_id] = ranked_info
                     break
                 except ApiError as err:
-                        if err.response.status_code == 429:
-                            await asyncio.sleep(int(err.header['Retry-After']))
-                            continue
-                        else:
-                            # it's not quota exceed - skip
-                            break
+                    if err.response.status_code == 429:
+                        await asyncio.sleep(int(err.header['Retry-After']))
+                        continue
+                    else:
+                        # it's not quota exceed - skip
+                        break
                 except Exception as err:
-                    log.exception(f"can't get summoner_id by leaderboard for {config['summoner_name']}#{config['region']}", exc_info=Exception)
+                    log.exception(
+                        "Can't get summoner_id for {name}#{region}"
+                            .format(name=config['summoner_name'], region=config['region']),
+                        exc_info=Exception
+                    )
                     break
 
         for guild_id in guilds.keys():
@@ -176,20 +184,11 @@ class LeagueOfLegends(commands.Cog):
             if len(guild_summoners) == 0:
                 continue
 
-            # [{'leagueId': '6f6447e1-f58a-38be-a252-322a480e9867', 'queueType': 'RANKED_SOLO_5x5', 'tier': 'CHALLENGER',
-            #   'rank': 'I', 'summonerId': 'v6InAqLEJyqAn1q5BDXhBcFa7vwMDtTcijHlADRJa0o1', 'summonerName': 'BMPX',
-            #   'leaguePoints': 811, 'wins': 462, 'losses': 405, 'veteran': True, 'inactive': False, 'freshBlood': False,
-            #   'hotStreak': False},
-            #  {'leagueId': '374f3a69-5147-43e0-b193-219017cd737b', 'queueType': 'RANKED_FLEX_SR', 'tier': 'PLATINUM',
-            #   'rank': 'I', 'summonerId': 'v6InAqLEJyqAn1q5BDXhBcFa7vwMDtTcijHlADRJa0o1', 'summonerName': 'BMPX',
-            #   'leaguePoints': 58, 'wins': 81, 'losses': 51, 'veteran': False, 'inactive': False, 'freshBlood': False,
-            #   'hotStreak': False}]
-
             queues = ['RANKED_SOLO_5x5', 'RANKED_FLEX_SR']
             current_messages = []
 
             for queue in queues:
-                embed = Embed(title=f"Leaderboard for {queue} queue", colour=embed_colour)
+                embed = Embed(title=_("Leaderboard for {queue} queue").format(queue=queue), colour=embed_colour)
 
                 queue_summoners = []
 
@@ -210,7 +209,7 @@ class LeagueOfLegends(commands.Cog):
                     else:
                         user = discord.utils.get(self.bot.users, id=summoner['discord_id'])
                         embed.add_field(
-                            name=f"#{i+1}",
+                            name=f"#{i + 1}",
                             value=f"{summoner['summonerName']} ({user.mention}) - {summoner['tier']} {summoner['rank']}",
                             inline=False
                         )
@@ -222,8 +221,8 @@ class LeagueOfLegends(commands.Cog):
     async def get_api_key(self, ctx: commands.Context = None):
         api_keys = await self.bot.get_shared_api_tokens("leagueoflegends")
         if api_keys is None and ctx is not None:
-            await ctx.send("Error! League Of Legends ``api_key`` is not provided! Set it by ``[p]set api "
-                           "leagueoflegends api_key,[YOUR API TOKEN]``.")
+            await ctx.send(_("Error! League Of Legends ``api_key`` is not provided! Set it by ``[p]set api "
+                             "leagueoflegends api_key,[YOUR API TOKEN]``."))
         return api_keys.get("api_key")
 
     @commands.group()
@@ -233,10 +232,10 @@ class LeagueOfLegends(commands.Cog):
         pass
 
     @lol.command(alias=["set_name"])
-    async def setname(self, ctx:commands.Context):
+    async def setname(self, ctx: commands.Context):
         """Sets the "Summoner name" for the user"""
 
-        await ctx.send("Send a proper ``Summoner name``")
+        await ctx.send(_("Send a proper ``Summoner name``"))
 
         try:
             msg = await self.bot.wait_for(
@@ -245,13 +244,13 @@ class LeagueOfLegends(commands.Cog):
                 timeout=30
             )
         except asyncio.TimeoutError:
-            await ctx.send("Time is out. Cancelled.")
+            await ctx.send(_("Time is out. Cancelled."))
         else:
             await self.config.user(ctx.author).summoner_name.set(msg.content)
             await self.config.user(ctx.author).account_id.set("")
             await self.config.user(ctx.author).puuid.set("")
             await self.config.user(ctx.author).summoner_id.set("")
-            await ctx.send("Your name is set as \""+await self.config.user(ctx.author).summoner_name()+"\"")
+            await ctx.send(_("Your name is set as \"{name}\"").format(name=msg.content))
 
     async def getLocale(self, ctx):
         return await i18n.get_locale_from_guild(self.bot, ctx.guild)
@@ -261,24 +260,24 @@ class LeagueOfLegends(commands.Cog):
         """Sets the region for the user"""
 
         valid_region_codes = {
-            "EUW": "Europe West",
-            "EUNE": "Europe Nordic & East",
-            "NA": "North America",
-            "BR": "Brazil",
-            "RU": "Russia",
-            "TR": "Turkey",
-            "OC1": "Oceania",
-            "LA1": "Latin America North",
-            "LA2": "Latin America South",
-            "JP": "Japan",
-            "PH": "Philippine",
-            "SG": "Singapore",
-            "TH": "Thailand",
-            "TW": "Taiwan",
-            "VN": "Vietnam"
+            "EUW": _("Europe West"),
+            "EUNE": _("Europe Nordic & East"),
+            "NA": _("North America"),
+            "BR": _("Brazil"),
+            "RU": _("Russia"),
+            "TR": _("Turkey"),
+            "OC1": _("Oceania"),
+            "LA1": _("Latin America North"),
+            "LA2": _("Latin America South"),
+            "JP": _("Japan"),
+            "PH": _("Philippine"),
+            "SG": _("Singapore"),
+            "TH": _("Thailand"),
+            "TW": _("Taiwan"),
+            "VN": _("Vietnam")
         }
         embed = Embed(
-            description="Send a proper ``Region code`` e.g.:",
+            description=_("Send a proper ``Region code`` e.g.:"),
             colour=await ctx.embed_colour()
         )
         for code in valid_region_codes.keys():
@@ -296,17 +295,24 @@ class LeagueOfLegends(commands.Cog):
                 timeout=30
             )
         except asyncio.TimeoutError:
-            await ctx.send("Time is out. Cancelled.")
+            await ctx.send(_("Time is out. Cancelled."))
         else:
             region = str.upper(msg.content)
             if region not in valid_region_codes:
-                await ctx.send("This is not valid ``Region code``!")
+                await ctx.send(_("This is not valid ``Region code``!"))
                 return
-            await self.config.user(ctx.author).region.set(msg.content)
+            await self.config.user(ctx.author).region.set(region)
             await self.config.user(ctx.author).account_id.set("")
             await self.config.user(ctx.author).puuid.set("")
             await self.config.user(ctx.author).summoner_id.set("")
-            await ctx.send("Your region is set as ``" + await self.config.user(ctx.author).region() + "`` ("+valid_region_codes[region]+")")
+            # await ctx.send(
+            #    "Your region is set as ``" + await self.config.user(ctx.author).region() + "`` (" + valid_region_codes[
+            #        region] + ")")
+
+            await ctx.send(
+                _("Your region has been set as ``{region_code}`` ({region_name})")
+                    .format(region_code=region, region_name=valid_region_codes[region])
+            )
 
     @lol.command()
     async def userstats(self, ctx: commands.Context):
@@ -315,13 +321,19 @@ class LeagueOfLegends(commands.Cog):
         # Check name
         summoner_name = await self.config.user(ctx.author).summoner_name()
         if summoner_name is None:
-            await ctx.send("You did not set a ``Summoner name``! You can do this with this command: ``"+ctx.prefix+"lol setname``")
+            await ctx.send(
+                _("You did not set a ``Summoner name``! You can do this with this command: ``{prefix}lol setname``")
+                    .format(prefix=ctx.prefix)
+            )
             return
 
         # Check region
         region = await self.config.user(ctx.author).region()
         if region is None:
-            await ctx.send("You did not set a ``Region``! You can do this with this command: ``"+ctx.prefix+"lol setregion``")
+            await ctx.send(
+                _("You did not set a ``Region``! You can do this with this command: ``{prefix}lol setregion``")
+                    .format(prefix=ctx.prefix)
+            )
             return
 
         region = str.lower(region)
@@ -344,36 +356,37 @@ class LeagueOfLegends(commands.Cog):
             global embed
             if err.response.status_code == 404:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Summoner not found!",
+                    title=_("Got error while getting summoner's stats!"),
+                    description=_("Summoner not found!"),
                     color=0xff0000
                 )
 
             elif err.response.status_code == 429:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Unfortunately, can't get your stats because the Riot API quota was fully used. "
-                                "The quota will be restored in ``{} seconds``.".format(err.header["Retry-After"]),
+                    title=_("Got error while getting summoner's stats!"),
+                    description=_("Unfortunately, can't get your stats because the Riot API quota was fully used. "
+                                  "The quota will be restored in ``{seconds} seconds``.").format(
+                        seconds=err.header["Retry-After"]),
                     color=0xff0000
                 )
                 await ctx.send(embed=embed)
             elif err.response.status_code == 403:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Couldn't get your stats because API key expired or cancelled.",
+                    title=_("Got error while getting summoner's stats!"),
+                    description=_("Couldn't get your stats because API key expired or cancelled."),
                     color=0xff0000
                 )
 
             await ctx.send(embed=embed)
             return
 
-        embed = Embed(title="Summoner statistics", colour=await ctx.embed_colour())
+        embed = Embed(title=_("Summoner statistics"), colour=await ctx.embed_colour())
 
         embed.set_author(name=summoner["name"])
 
-        embed.add_field(name="Level", value=str(summoner["summonerLevel"]), inline=True)
+        embed.add_field(name=_("Level"), value=str(summoner["summonerLevel"]), inline=True)
 
-        embed.set_footer(text="League of Legends RED Cog developed by NukDokPlex using RiotWatcher wrapper")
+        embed.set_footer(text=_("League of Legends RED Cog developed by NukDokPlex using RiotWatcher wrapper"))
         embed.set_thumbnail(
             url=f"http://ddragon.leagueoflegends.com/cdn/{datadragon_version}/img/profileicon/{str(summoner['profileIconId'])}.png"
         )
@@ -383,43 +396,36 @@ class LeagueOfLegends(commands.Cog):
         try:
             rankedInfo = lol.league.by_summoner(region=region, encrypted_summoner_id=summoner['id'])
         except ApiError as err:
-
             if err.response.status_code == 404:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Summoner not found!",
+                    title=_("Got error while getting summoner's stats!"),
+                    description=_("Summoner not found!"),
                     color=0xff0000
                 )
-
             elif err.response.status_code == 429:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Unfortunately, can't get your stats because the Riot API quota was fully used. "
-                                "The quota will be restored in ``{} seconds``.".format(err.header["Retry-After"]),
+                    title=_("Got error while getting summoner's stats!"),
+                    description=_("Unfortunately, can't get your stats because the Riot API quota was fully used. "
+                                  "The quota will be restored in ``{seconds} seconds``.").format(
+                        seconds=err.header["Retry-After"]),
                     color=0xff0000
                 )
                 await ctx.send(embed=embed)
             elif err.response.status_code == 403:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Couldn't get your stats because API key expired or cancelled.",
+                    title=_("Got error while getting summoner's stats!"),
+                    description=_("Couldn't get your stats because API key expired or cancelled."),
                     color=0xff0000
                 )
 
             await ctx.send(embed=embed)
             return
 
-        # [{'leagueId': '6f6447e1-f58a-38be-a252-322a480e9867', 'queueType': 'RANKED_SOLO_5x5', 'tier': 'CHALLENGER',
-        #   'rank': 'I', 'summonerId': 'v6InAqLEJyqAn1q5BDXhBcFa7vwMDtTcijHlADRJa0o1', 'summonerName': 'BMPX',
-        #   'leaguePoints': 811, 'wins': 462, 'losses': 405, 'veteran': True, 'inactive': False, 'freshBlood': False,
-        #   'hotStreak': False},
-        #  {'leagueId': '374f3a69-5147-43e0-b193-219017cd737b', 'queueType': 'RANKED_FLEX_SR', 'tier': 'PLATINUM',
-        #   'rank': 'I', 'summonerId': 'v6InAqLEJyqAn1q5BDXhBcFa7vwMDtTcijHlADRJa0o1', 'summonerName': 'BMPX',
-        #   'leaguePoints': 58, 'wins': 81, 'losses': 51, 'veteran': False, 'inactive': False, 'freshBlood': False,
-        #   'hotStreak': False}]
-
         for info in rankedInfo:
-            embed = Embed(title="Statistics for "+info["queueType"], colour=await ctx.embed_colour())
+            embed = Embed(
+                title=_("Statistics for {queue_type}").format(queue_type=info["queueType"]),
+                colour=await ctx.embed_colour()
+            )
             embed.set_author(name=summoner["name"])
             embed.set_thumbnail(
                 url="https://nukdotcom.ru/wp-content/uploads/2021/07/" + info["tier"] + ".png"
@@ -430,13 +436,13 @@ class LeagueOfLegends(commands.Cog):
             embed.add_field(name="Wins", value=str(info["wins"]), inline=True)
             embed.add_field(name="Losses", value=str(info["losses"]), inline=True)
             winrate = float(info["wins"] / (info["wins"] + info["losses"])) * 100
-            embed.add_field(name="Winrate", value=humanize_number(winrate, await self.getLocale(ctx))+"%")
+            embed.add_field(name="Winrate", value=humanize_number(winrate, await self.getLocale(ctx)) + "%")
 
             statuses = [
-                {'name': "veteran", 'nice': "Veteran"},
-                {'name': "inactive", 'nice': "Inactive"},
-                {'name': "freshBlood", 'nice': "Fresh Blood"},
-                {'name': "hotStreak", 'nice': "Hot Streak"}
+                {'name': "veteran", 'nice': _("Veteran")},
+                {'name': "inactive", 'nice': _("Inactive")},
+                {'name': "freshBlood", 'nice': _("Fresh Blood")},
+                {'name': "hotStreak", 'nice': _("Hot Streak")}
             ]
             statusesToDisplay = []
             for status in statuses:
@@ -446,17 +452,17 @@ class LeagueOfLegends(commands.Cog):
             statuses_str = ""
 
             i = 0
-            while i <= len(statusesToDisplay)-2:
+            while i <= len(statusesToDisplay) - 2:
                 statuses_str += statusesToDisplay[i]
                 statuses_str += ", "
                 i += 1
 
             if len(statusesToDisplay) > 0:
-                statuses_str += statusesToDisplay[len(statusesToDisplay)-1]
+                statuses_str += statusesToDisplay[len(statusesToDisplay) - 1]
             else:
                 statuses_str = "-"
 
-            embed.add_field(name="Status", value=statuses_str, inline=True)
+            embed.add_field(name=_("Status"), value=statuses_str, inline=True)
 
             await ctx.send(embed=embed)
 
@@ -464,7 +470,8 @@ class LeagueOfLegends(commands.Cog):
     @commands.guild_only()
     @commands.guildowner()
     async def setup_leaderboard(self, ctx):
-        """Setup League Of Legends"""
+        """Setup League Of Legends leaderboard in server"""
+
         await ctx.send("Send a proper text channel with ``#`` prefix.")
         pred = MessagePredicate.same_context(ctx).valid_text_channel(ctx)
         try:
@@ -474,7 +481,7 @@ class LeagueOfLegends(commands.Cog):
                 timeout=30
             )
         except asyncio.TimeoutError:
-            await ctx.send("Time is out. Cancelled.")
+            await ctx.send(_("Time is out. Cancelled."))
             return
         else:
             channel = msg.channel_mentions[0].id
@@ -482,11 +489,11 @@ class LeagueOfLegends(commands.Cog):
             await self.config.guild(ctx.guild).leaderboard_channel.set(channel)
             await self.config.guild(ctx.guild).enable_leaderboard.set(True)
 
-            await ctx.send("You selected "+msg.content+" channel. This channel will now update the leaderboard every "
-                                                       "hour with users who have already set their ``Summoner name`` "
-                                                       "and ``Region``. To set it, use the commands ``[p]lol setname`` "
-                                                       "and ``[p]lol setregion``. Only correct ones will be added to "
-                                                       "the leaderboard!")
+            await ctx.send(
+                _("You selected <#{channel}> channel. This channel will now update the leaderboard every hour with "
+                  "users who have already set their ``Summoner name`` and ``Region``. To set it, use the commands "
+                  "``{prefix}lol setname`` and ``{prefix}lol setregion``. Only correct ones will be added to the "
+                  "leaderboard!").format(channel=str(channel), prefix=ctx.prefix))
 
     @lol.command()
     @commands.guild_only()
@@ -496,7 +503,7 @@ class LeagueOfLegends(commands.Cog):
 
         await self.config.guild(ctx.guild).enable_leaderboard.set(True)
 
-        await ctx.send("Leaderboard has been enabled for this guild!")
+        await ctx.send(_("Leaderboard has been enabled for this guild!"))
 
     @lol.command()
     @commands.guild_only()
@@ -506,14 +513,16 @@ class LeagueOfLegends(commands.Cog):
 
         await self.config.guild(ctx.guild).enable_leaderboard.set(False)
 
-        await ctx.send("Leaderboard has been disabled for this guild!")
+        await ctx.send(_("Leaderboard has been disabled for this guild!"))
 
     @lol.command()
     @commands.is_owner()
     async def reload_leaderboards(self, ctx: commands.Context):
         """Reload all League of Legends leaderboards"""
 
-        await ctx.send("Leaderboards in all guilds will be reloaded immediately.\nThe next update will take place in one hour.")
+        await ctx.send(
+            _("Leaderboards in all guilds will be reloaded immediately.\nThe next update will take place in one hour.")
+        )
         self.scheduler.shutdown()
         await self.leaderboard_update_job()
         self.scheduler.start()
@@ -522,20 +531,22 @@ class LeagueOfLegends(commands.Cog):
     async def _lol_lastmatch(self, ctx: commands.Context):
         """Returns summoner's last match info"""
 
-
-
         # Check name
         summoner_name = await self.config.user(ctx.author).summoner_name()
         if summoner_name is None:
             await ctx.send(
-                "You did not set a ``Summoner name``! You can do this with this command: ``" + ctx.prefix + "lol setname``")
+                _("You did not set a ``Summoner name``! You can do this with this command: ``{prefix}lol setname``")
+                    .format(prefix=ctx.prefix)
+            )
             return
 
         # Check region
         region = await self.config.user(ctx.author).region()
         if region is None:
             await ctx.send(
-                "You did not set a ``Region``! You can do this with this command: ``" + ctx.prefix + "lol setregion``")
+                _("You did not set a ``Region``! You can do this with this command: ``{prefix}lol setregion``")
+                    .format(prefix=ctx.prefix)
+            )
             return
 
         region = str.lower(region)
@@ -546,46 +557,61 @@ class LeagueOfLegends(commands.Cog):
 
         lol = LolWatcher(api_key)
 
-        try:
-            summoner = lol.summoner.by_name(
-                summoner_name=summoner_name,
-                region=str.lower(region)
-            )
-        except ApiError as err:
-            if err.response.status_code == 404:
-                embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Summoner not found!",
-                    color=0xff0000
+        puuid = await self.config.user(ctx.author).puuid()
+
+        if puuid is None or puuid == "":
+            try:
+                summoner = lol.summoner.by_name(
+                    summoner_name=summoner_name,
+                    region=str.lower(region)
                 )
 
-            elif err.response.status_code == 429:
-                embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Unfortunately, can't get your stats because the Riot API quota was fully used. "
-                                "The quota will be restored in ``{} seconds``.".format(err.header["Retry-After"]),
-                    color=0xff0000
-                )
+                await self.config.user(ctx.author).summoner_id.set(summoner['id'])
+                await self.config.user(ctx.author).puuid.set(summoner['puuid'])
+                await self.config.user(ctx.author).account_id.set(summoner['accountId'])
+
+                puuid = await self.config.user(ctx.author).puuid()
+            except ApiError as err:
+                if err.response.status_code == 404:
+                    embed = Embed(
+                        title=_("Got error while getting summoner's profile!"),
+                        description=_("Summoner not found!"),
+                        color=0xff0000
+                    )
+                elif err.response.status_code == 429:
+                    embed = Embed(
+                        title=_("Got error while getting summoner's profile!"),
+                        description=_("Unfortunately, can't get your stats because the Riot API quota was fully used. "
+                                      "The quota will be restored in ``{seconds} seconds``.").format(
+                            seconds=err.header["Retry-After"]),
+                        color=0xff0000
+                    )
+                    await ctx.send(embed=embed)
+                elif err.response.status_code == 403:
+                    embed = Embed(
+                        title=_("Got error while getting summoner's profile!"),
+                        description=_("Couldn't get your stats because API key expired or cancelled."),
+                        color=0xff0000
+                    )
+                else:
+                    embed = Embed(
+                        title=_("Got error while getting summoner's profile!"),
+                        description=_("Unexpected error, see logs for details."),
+                        color=0xff0000
+                    )
+                    log.exception("Got error while getting summoner's last match!", exc_info=err)
+
                 await ctx.send(embed=embed)
-            elif err.response.status_code == 403:
+                return
+            except Exception as err:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Couldn't get your stats because API key expired or cancelled.",
-                    color=0xff0000
-                )
-            else:
-                embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Unexpected error, see logs for details.",
+                    title=_("Got error while getting summoner's stats!"),
+                    description=_("Unexpected error, see logs for details."),
                     color=0xff0000
                 )
                 log.exception("Got error while getting summoner's last match!", exc_info=err)
 
-            await ctx.send(embed=embed)
-            return
-        """
-        {'id': 'v6InAqLEJyqAn1q5BDXhBcFa7vwMDtTcijHlADRJa0o1', 'accountId': 'Na5HRo2TcALrgLtWGlrJav9IeyfeAJuiGGGJPn2QUC9ht9o', 'puuid': 'AoQiI83Fptup1ZZxVTuLCt_4fGJAyD5v9-8niNHwRRlRhSEuV8CJIZtD5z1Wq5T6AkIMpe_m2nZPNQ', 'name': 'BMPX', 'profileIconId': 4987, 'revisionDate': 1625675786000, 'summonerLevel': 238}
-        """
+                await ctx.send(embed=embed)
 
         regions_translations = {
             "na": "americas",
@@ -599,52 +625,62 @@ class LeagueOfLegends(commands.Cog):
             "euw": "europe",
             "tr": "europe",
             "ru": "europe"
-
         }
+
+        match_ids = []
 
         try:
             match_ids = lol.match_v5.matchlist_by_puuid(
                 region=regions_translations[region],
-                puuid=summoner["puuid"],
+                puuid=puuid,
                 start=0,
                 count=1
             )
         except ApiError as err:
-
             if err.response.status_code == 404:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Summoner not found!",
+                    title=_("Got error while getting summoner's last match!"),
+                    description=_("Summoner not found!"),
                     color=0xff0000
                 )
 
             elif err.response.status_code == 429:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Unfortunately, can't get your stats because the Riot API quota was fully used. "
-                                "The quota will be restored in ``{} seconds``.".format(err.header["Retry-After"]),
+                    title=_("Got error while getting summoner's last match!"),
+                    description=_("Unfortunately, can't get your stats because the Riot API quota was fully used. "
+                                  "The quota will be restored in ``{seconds} seconds``.").format(
+                        seconds=err.header["Retry-After"]),
                     color=0xff0000
                 )
                 await ctx.send(embed=embed)
             elif err.response.status_code == 403:
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Couldn't get your stats because API key expired or cancelled.",
+                    title=_("Got error while getting summoner's last match!"),
+                    description=_("Couldn't get your stats because API key expired or cancelled."),
                     color=0xff0000
                 )
             else:
+                log.exception("Got error while getting summoner's last match!", exc_info=err)
                 embed = Embed(
-                    title="Got error while getting summoner's stats!",
-                    description="Unexpected error, see logs for details.",
+                    title=_("Got error while getting summoner's last match!"),
+                    description=_("Unexpected error, see logs for details."),
                     color=0xff0000
                 )
-                log.exception("Got error while getting summoner's last match!", exc_info=err)
 
+            await ctx.send(embed=embed)
+            return
+        except Exception as err:
+            log.exception("Got error while getting summoner's last match!", exc_info=err)
+            embed = Embed(
+                title=_("Got error while getting summoner's last match!"),
+                description=_("Unexpected error, see logs for details."),
+                color=0xff0000
+            )
             await ctx.send(embed=embed)
             return
 
         if len(match_ids) < 1:
-            await ctx.send("Can't find any match for you... Maybe you didn't play any?")
+            await ctx.send(_("Can't find any match for you... Maybe you didn't play any?"))
             return
 
         match_id = match_ids[0]
@@ -654,32 +690,43 @@ class LeagueOfLegends(commands.Cog):
         except ApiError as err:
             if err.response.status_code == 404:
                 embed = Embed(
-                    title="Got error while getting summoner's match info!",
-                    description="Summoner not found!",
+                    title=_("Got error while getting summoner's match info!"),
+                    description=_("Summoner not found!"),
                     color=0xff0000
                 )
 
             elif err.response.status_code == 429:
                 embed = Embed(
-                    title="Got error while getting summoner's match info!",
-                    description="Unfortunately, can't get your stats because the Riot API quota was fully used. "
-                                "The quota will be restored in ``{} seconds``.".format(err.header["Retry-After"]),
+                    title=_("Got error while getting summoner's match info!"),
+                    description=_("Unfortunately, can't get your stats because the Riot API quota was fully used. "
+                                  "The quota will be restored in ``{seconds} seconds``.").format(
+                        seconds=err.header["Retry-After"]),
                     color=0xff0000
                 )
                 await ctx.send(embed=embed)
             elif err.response.status_code == 403:
                 embed = Embed(
-                    title="Got error while getting summoner's match info!",
-                    description="Couldn't get your stats because API key expired or cancelled.",
+                    title=_("Got error while getting summoner's match info!"),
+                    description=_("Couldn't get your stats because API key expired or cancelled."),
                     color=0xff0000
                 )
             else:
                 embed = Embed(
-                    title="Got error while getting summoner's match info!",
-                    description="Unexpected error, see logs for details.",
+                    title=_("Got error while getting summoner's match info!"),
+                    description=_("Unexpected error, see logs for details."),
                     color=0xff0000
                 )
                 log.exception("Got error while getting summoner's last match info!", exc_info=err)
+
+            await ctx.send(embed=embed)
+            return
+        except Exception as err:
+            embed = Embed(
+                title=_("Got error while getting summoner's match info!"),
+                description=_("Unexpected error, see logs for details."),
+                color=0xff0000
+            )
+            log.exception("Got error while getting summoner's last match info!", exc_info=err)
 
             await ctx.send(embed=embed)
             return
@@ -687,60 +734,56 @@ class LeagueOfLegends(commands.Cog):
         stats = {}
 
         for participant in match['info']['participants']:
-            if participant['puuid'] == summoner['puuid']:
+            if participant['puuid'] == puuid:
                 stats = participant
 
-        embed = Embed(title="Win!" if stats['win'] is True else "Defeat!", colour=await ctx.embed_colour())
+        embed = Embed(title=_("Win!") if stats['win'] is True else _("Defeat!"), colour=await ctx.embed_colour())
 
-        embed.set_author(name=stats['summonerName']+" as "+stats['championName'])
+        embed.set_author(name=stats['summonerName'] + " as " + stats['championName'])
 
-        embed.set_thumbnail(url=f"https://ddragon.leagueoflegends.com/cdn/{datadragon_version}/img/champion/{str(stats['championName']).replace(' ', '')}.png")
-        embed.add_field(name="Kills", value=str(stats['kills']), inline=True)
-        embed.add_field(name="Deaths", value=str(stats['deaths']), inline=True)
-        embed.add_field(name="Assists", value=str(stats['assists']), inline=True)
-        embed.add_field(name="Position", value=str(stats['lane']).lower().capitalize())
+        embed.set_thumbnail(
+            url=f"https://ddragon.leagueoflegends.com/cdn/{datadragon_version}/img/champion/{str(stats['championName']).replace(' ', '')}.png")
+        embed.add_field(name=_("Kills"), value=str(stats['kills']), inline=True)
+        embed.add_field(name=_("Deaths"), value=str(stats['deaths']), inline=True)
+        embed.add_field(name=_("Assists"), value=str(stats['assists']), inline=True)
+        embed.add_field(name=_("Position"), value=str(stats['lane']).lower().capitalize())
         embed.add_field(
-            name="Gold spent",
+            name=_("Gold spent"),
             value=f"{str(stats['goldSpent'])}/{str(stats['goldEarned'])}",
             inline=True
         )
         embed.add_field(
-            name="Champion level",
+            name=_("Champion level"),
             value=str(stats['champLevel']),
             inline=True
         )
 
         if stats['firstBloodKill'] is True:
             embed.add_field(
-                name="First blood",
-                value="achieved!",
+                name=_("First blood"),
+                value=_("achieved!"),
                 inline=True
             )
 
         if stats['firstTowerKill'] is True:
             embed.add_field(
-                name="First tower",
-                value="achieved!",
+                name=_("First tower"),
+                value=_("achieved!"),
                 inline=True
             )
 
         if stats['pentaKills'] is not None and stats['pentaKills'] > 0:
             embed.add_field(
-                name="Penta Kills!",
+                name=_("Penta Kills!"),
                 value=str(stats['pentaKills']),
                 inline=True
             )
 
         if stats['quadraKills'] is not None and stats['quadraKills'] > 0:
             embed.add_field(
-                name="Quadra Kills!",
+                name=_("Quadra Kills!"),
                 value=str(stats['quadraKills']),
                 inline=True
             )
 
         await ctx.send(embed=embed)
-
-
-
-
-

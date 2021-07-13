@@ -1,0 +1,9 @@
+{
+    "author" : ["NukDokPlex"],
+    "description" : "osu! related commands to retrieve statistics of users, see .",
+    "disabled" : false,
+    "short" : "osu! related commands",
+    "name" : "osu!",
+    "tags" : ["osu", "statistics", "leaderboard", "ppy", "game", "rhytm"],
+    "install_msg" : "Installed successfuly!\nTo set osu client id and secret use command ``[p]set api osu client_id,[YOUR_CLIENT_ID] client_secret,[YOUR_CLIENT_SECRET]``.\nAuthor's website: https://nukdotcom.ru/"
+}
