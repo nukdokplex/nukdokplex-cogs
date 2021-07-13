@@ -6,6 +6,7 @@ import discord
 from redbot.core.utils.predicates import MessagePredicate
 from redbot.core.utils.chat_formatting import humanize_number
 from redbot.core import commands, Config, bot as RedBot, errors, i18n
+from discord.errors import NotFound as DiscordNotFoundError
 from redbot.core.commands import UserInputOptional
 from redbot.core.i18n import Translator, cog_i18n
 from json import JSONEncoder, JSONDecoder
@@ -178,8 +179,11 @@ class LeagueOfLegends(commands.Cog):
             for message_id in current_messages:
                 try:
                     await channel.delete_messages([channel.get_partial_message(message_id=message_id)])
+                except DiscordNotFoundError:
+                    log.exception("Can't delete message from text channel, cause message or channel or guild not found!", exc_info=DiscordNotFoundError)
                 except Exception:
                     log.exception("Can't delete message from text channel (maybe no permission?)", exc_info=Exception)
+
 
             if len(guild_summoners) == 0:
                 continue
