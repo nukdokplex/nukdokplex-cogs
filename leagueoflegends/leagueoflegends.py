@@ -430,13 +430,13 @@ class LeagueOfLegends(commands.Cog):
             embed.set_thumbnail(
                 url="https://nukdotcom.ru/wp-content/uploads/2021/07/" + info["tier"] + ".png"
             )
-            embed.add_field(name="Tier", value=info["tier"], inline=True)
-            embed.add_field(name="Rank", value=info["rank"], inline=True)
-            embed.add_field(name="League points", value=str(info["leaguePoints"]), inline=True)
-            embed.add_field(name="Wins", value=str(info["wins"]), inline=True)
-            embed.add_field(name="Losses", value=str(info["losses"]), inline=True)
+            embed.add_field(name=_("Tier"), value=info["tier"], inline=True)
+            embed.add_field(name=_("Rank"), value=info["rank"], inline=True)
+            embed.add_field(name=_("League points"), value=str(info["leaguePoints"]), inline=True)
+            embed.add_field(name=_("Wins"), value=str(info["wins"]), inline=True)
+            embed.add_field(name=_("Losses"), value=str(info["losses"]), inline=True)
             winrate = float(info["wins"] / (info["wins"] + info["losses"])) * 100
-            embed.add_field(name="Winrate", value=humanize_number(winrate, await self.getLocale(ctx)) + "%")
+            embed.add_field(name=_("Winrate"), value=humanize_number(winrate, await self.getLocale(ctx)) + "%")
 
             statuses = [
                 {'name': "veteran", 'nice': _("Veteran")},

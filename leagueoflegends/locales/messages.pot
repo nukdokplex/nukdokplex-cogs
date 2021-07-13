@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-07-13 04:41+0500\n"
+"POT-Creation-Date: 2021-07-13 05:56+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,6 +197,30 @@ msgstr ""
 
 #: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:426
 msgid "Statistics for {queue_type}"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:433
+msgid "Tier"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:434
+msgid "Rank"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:435
+msgid "League points"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:436
+msgid "Wins"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:437
+msgid "Losses"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:439
+msgid "Winrate"
 msgstr ""
 
 #: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:442

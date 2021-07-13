@@ -207,6 +207,30 @@ msgstr "Шестерня Лиги Легенл для RED была разраб�
 msgid "Statistics for {queue_type}"
 msgstr "Статистика для {queue_type}"
 
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:433
+msgid "Tier"
+msgstr "Класс"
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:434
+msgid "Rank"
+msgstr "Ранк"
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:435
+msgid "League points"
+msgstr "Очки Лиги"
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:436
+msgid "Wins"
+msgstr "Победы"
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:437
+msgid "Losses"
+msgstr "Поражение"
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:439
+msgid "Winrate"
+msgstr "Винрейт"
+
 #: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:442
 msgid "Veteran"
 msgstr "Ветеран"
