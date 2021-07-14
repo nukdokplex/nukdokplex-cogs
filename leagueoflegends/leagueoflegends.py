@@ -93,6 +93,8 @@ class LeagueOfLegends(commands.Cog):
 
         summoners = await self.config.all_users()
 
+        log.info(f"this summoners will be updated: {json.dumps(summoners)}")
+
         for user_id in summoners.keys():
             config = summoners[user_id]
 
@@ -110,6 +112,10 @@ class LeagueOfLegends(commands.Cog):
                         await self.config.user_from_id(user_id=user_id).account_id.set(summoner['accountId'])
                         await self.config.user_from_id(user_id=user_id).puuid.set(summoner['puuid'])
                         await self.config.user_from_id(user_id=user_id).summoner_id.set(summoner['id'])
+                        config['account_id'] = summoner['accountId']
+                        config['puuid'] = summoner['puuid']
+                        config['summoner_id'] = summoner['id']
+                        summoner_id = summoner['id']
                         break
                     except ApiError as err:
                         if err.response.status_code == 429:
@@ -173,7 +179,7 @@ class LeagueOfLegends(commands.Cog):
             guild_summoners = ranked_infos.copy()
 
             for user_id in ranked_infos.keys():
-                if not self.bot.get_or_fetch_member(guild, user_id):
+                if not (await self.bot.get_or_fetch_member(guild, user_id)):
                     del guild_summoners[user_id]
 
             channel = discord.utils.get(guild.text_channels, id=channel_id)
@@ -185,7 +191,6 @@ class LeagueOfLegends(commands.Cog):
                     log.exception("Can't delete message from text channel, cause message or channel or guild not found!", exc_info=DiscordNotFoundError)
                 except Exception:
                     log.exception("Can't delete message from text channel (maybe no permission?)", exc_info=Exception)
-
 
             if len(guild_summoners) == 0:
                 continue
@@ -266,21 +271,21 @@ class LeagueOfLegends(commands.Cog):
         """Sets the region for the user"""
 
         valid_region_codes = {
-            "EUW": _("Europe West"),
+            "EUW":  _("Europe West"),
             "EUNE": _("Europe Nordic & East"),
-            "NA": _("North America"),
-            "BR": _("Brazil"),
-            "RU": _("Russia"),
-            "TR": _("Turkey"),
-            "OC1": _("Oceania"),
-            "LA1": _("Latin America North"),
-            "LA2": _("Latin America South"),
-            "JP": _("Japan"),
-            "PH": _("Philippine"),
-            "SG": _("Singapore"),
-            "TH": _("Thailand"),
-            "TW": _("Taiwan"),
-            "VN": _("Vietnam")
+            "NA":   _("North America"),
+            "BR":   _("Brazil"),
+            "RU":   _("Russia"),
+            "TR":   _("Turkey"),
+            "OC1":  _("Oceania"),
+            "LA1":  _("Latin America North"),
+            "LA2":  _("Latin America South"),
+            "JP":   _("Japan"),
+            "PH":   _("Philippine"),
+            "SG":   _("Singapore"),
+            "TH":   _("Thailand"),
+            "TW":   _("Taiwan"),
+            "VN":   _("Vietnam")
         }
         embed = Embed(
             description=_("Send a proper ``Region code`` e.g.:"),
