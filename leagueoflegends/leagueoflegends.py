@@ -1,23 +1,16 @@
 import asyncio
-import json
 
 from discord import Message, Embed, Guild, TextChannel
 import discord
+from discord.ext import tasks
 from redbot.core.utils.predicates import MessagePredicate
 from redbot.core.utils.chat_formatting import humanize_number
 from redbot.core import commands, Config, bot as RedBot, errors, i18n
 from discord.errors import NotFound as DiscordNotFoundError
-from redbot.core.commands import UserInputOptional
+
 from redbot.core.i18n import Translator, cog_i18n
-from json import JSONEncoder, JSONDecoder
 
 from riotwatcher import LolWatcher, ApiError
-
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from apscheduler.executors.asyncio import AsyncIOExecutor
-from apscheduler.triggers.interval import IntervalTrigger
-
-from random import Random
 
 from .log import log
 
@@ -69,17 +62,15 @@ class LeagueOfLegends(commands.Cog):
         }
         self.config.register_guild(**default_guild)
         self.config.register_user(**default_user)
-        self.scheduler = AsyncIOScheduler()
-        self.scheduler.add_job(self.leaderboard_update_job, IntervalTrigger(hours=1))
-        self.scheduler.start()
+        self.leaderboard_update_job.start()
 
         super().__init__(*args, **kwargs)
 
     def cog_unload(self):
-        self.scheduler.remove_all_jobs()
-        self.scheduler.shutdown()
+        self.leaderboard_update_job.cancel()
         self.session.detach()
 
+    @tasks.loop(hours=1.0)
     async def leaderboard_update_job(self):
         log.info("Started scheduled task")
 
@@ -549,9 +540,8 @@ class LeagueOfLegends(commands.Cog):
         await ctx.send(
             _("Leaderboards in all guilds will be reloaded immediately.\nThe next update will take place in one hour.")
         )
-        self.scheduler.shutdown()
-        await self.leaderboard_update_job()
-        self.scheduler.start()
+
+        self.leaderboard_update_job.restart()
 
     @lol.command(name="lastmatch")
     async def _lol_lastmatch(self, ctx: commands.Context):
