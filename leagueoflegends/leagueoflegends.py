@@ -93,8 +93,6 @@ class LeagueOfLegends(commands.Cog):
 
         summoners = await self.config.all_users()
 
-        log.info(f"this summoners will be updated: {json.dumps(summoners)}")
-
         for user_id in summoners.keys():
             config = summoners[user_id]
 
@@ -166,6 +164,9 @@ class LeagueOfLegends(commands.Cog):
 
         for guild_id in guilds.keys():
             guild = self.bot.get_guild(guild_id)
+
+            if not guild:
+                continue
 
             current_messages = await self.config.guild(guild).current_messages()
             channel_id = await self.config.guild(guild).leaderboard_channel()
@@ -241,6 +242,20 @@ class LeagueOfLegends(commands.Cog):
         """League of Legends related commands"""
 
         pass
+
+    @lol.command()
+    @commands.is_owner()
+    async def reset_app_cache(self, ctx: commands.Context):
+        """Resets the League of Legends app cache"""
+
+        summoners = await self.config.all_users()
+
+        for summoner in summoners.keys():
+            await self.config.user_from_id(summoner).puuid.set("")
+            await self.config.user_from_id(summoner).summoner_id.set("")
+            await self.config.user_from_id(summoner).account_id.set("")
+
+        await ctx.send(_("The League of Legends app cache was successfully reset!"))
 
     @lol.command(alias=["set_name"])
     async def setname(self, ctx: commands.Context):
