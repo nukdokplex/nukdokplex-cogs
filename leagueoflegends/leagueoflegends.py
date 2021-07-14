@@ -49,6 +49,8 @@ _ = Translator("LeagueOfLegends", __file__)
 class LeagueOfLegends(commands.Cog):
     """LeagueOfLegends API related commands."""
 
+    bot: RedBot
+
     def __init__(self, bot: RedBot, *args, **kwargs):
         self.bot = bot
 
@@ -171,7 +173,7 @@ class LeagueOfLegends(commands.Cog):
             guild_summoners = ranked_infos.copy()
 
             for user_id in ranked_infos.keys():
-                if not guild.get_member(user_id):
+                if not self.bot.get_or_fetch_member(guild, user_id):
                     del guild_summoners[user_id]
 
             channel = discord.utils.get(guild.text_channels, id=channel_id)
