@@ -204,7 +204,7 @@ class LeagueOfLegends(commands.Cog):
 
                 queue_summoners = sorted(queue_summoners.copy(), key=lambda k: (k['tier_int'], k['rank_int']))
 
-                for i in range(0, 9):
+                for i in range(0, 15):
                     try:
                         summoner = queue_summoners[i]
                     except IndexError:
