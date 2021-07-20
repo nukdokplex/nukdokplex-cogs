@@ -1,0 +1,9 @@
+{
+    "author" : ["NukDokPlex"],
+    "description" : "License Info command remover. It's very bad cog.",
+    "disabled" : false,
+    "short" : "License Info command remover.",
+    "name" : "License Info Remover",
+    "tags" : ["licenseinfo", "license", "info", "remover"],
+    "install_msg" : "Installed successfuly!\nAuthor's website: https://nukdotcom.ru/"
+}
