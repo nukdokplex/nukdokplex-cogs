@@ -1,3 +1,3 @@
 import logging
 
-log = logging.getLogger("red.leagueoflegends")
+log = logging.getLogger("red.nukdokplex.leagueoflegends")
