@@ -174,7 +174,10 @@ class LeagueOfLegends(commands.Cog):
             guild_summoners = ranked_infos.copy()
 
             for user_id in ranked_infos.keys():
-                if not (await self.bot.get_or_fetch_member(guild, user_id)):
+                try:
+                    if not (await self.bot.get_or_fetch_member(guild, user_id)):
+                        del guild_summoners[user_id]
+                except discord.errors.NotFound:
                     del guild_summoners[user_id]
 
             channel = await self.bot.fetch_channel(channel_id)
