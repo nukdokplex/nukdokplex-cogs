@@ -70,8 +70,11 @@ class LeagueOfLegends(commands.Cog):
         self.leaderboard_update_job.cancel()
         self.session.detach()
 
+
+
     @tasks.loop(hours=1.0)
     async def leaderboard_update_job(self):
+
         log.info("Started scheduled task")
 
         api_key = await self.get_api_key()
@@ -154,7 +157,7 @@ class LeagueOfLegends(commands.Cog):
                     break
 
         for guild_id in guilds.keys():
-            guild = self.bot.get_guild(guild_id)
+            guild = await self.bot.fetch_guild(guild_id)
 
             if not guild:
                 continue
@@ -174,7 +177,7 @@ class LeagueOfLegends(commands.Cog):
                 if not (await self.bot.get_or_fetch_member(guild, user_id)):
                     del guild_summoners[user_id]
 
-            channel = discord.utils.get(guild.text_channels, id=channel_id)
+            channel = await self.bot.fetch_channel(channel_id)
             embed_colour = await self.bot.get_embed_color(channel)
             for message_id in current_messages:
                 try:
@@ -210,7 +213,7 @@ class LeagueOfLegends(commands.Cog):
                     except IndexError:
                         break
                     else:
-                        user = discord.utils.get(self.bot.users, id=summoner['discord_id'])
+                        user = await guild.fetch_member(summoner['discord_id'])
                         embed.add_field(
                             name=f"#{i + 1}",
                             value=f"{summoner['summonerName']} ({user.mention}) - {summoner['tier']} {summoner['rank']}",
@@ -220,6 +223,10 @@ class LeagueOfLegends(commands.Cog):
                 current_messages.append((await channel.send(embed=embed)).id)
 
             await self.config.guild(guild).current_messages.set(current_messages)
+
+    @leaderboard_update_job.before_loop
+    async def before_leaderboard_update_job(self):
+        await self.bot.wait_until_red_ready()
 
     async def get_api_key(self, ctx: commands.Context = None):
         api_keys = await self.bot.get_shared_api_tokens("leagueoflegends")
