@@ -1,4 +1,5 @@
 import asyncio
+import json
 
 from discord import Message, Embed, Guild, TextChannel
 import discord
@@ -179,7 +180,7 @@ class LeagueOfLegends(commands.Cog):
                         del guild_summoners[user_id]
                 except discord.errors.NotFound:
                     del guild_summoners[user_id]
-
+            print(channel_id)
             channel = await self.bot.fetch_channel(channel_id)
             embed_colour = await self.bot.get_embed_color(channel)
             for message_id in current_messages:
@@ -210,7 +211,7 @@ class LeagueOfLegends(commands.Cog):
 
                 queue_summoners = sorted(queue_summoners.copy(), key=lambda k: (k['tier_int'], k['rank_int']))
 
-                for i in range(0, 15):
+                for i in range(20):
                     try:
                         summoner = queue_summoners[i]
                     except IndexError:
