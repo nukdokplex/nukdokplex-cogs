@@ -15,7 +15,9 @@ from riotwatcher import LolWatcher, ApiError
 
 from .log import log
 
-datadragon_version = "11.14.1"
+_ = Translator("LeagueOfLegends", __file__)
+
+datadragon_version = "12.1.1"
 
 tiers_order = {
     "IRON": 9,
@@ -36,7 +38,9 @@ ranks_order = {
     "IV": 4
 }
 
-_ = Translator("LeagueOfLegends", __file__)
+queues_nicenames= {'RANKED_SOLO_5x5': _('Ranked Solo 5 vs. 5'),
+                   'RANKED_FLEX_SR': _('Ranked Flex SR'),
+                   'RANKED_FLEX_TT': _('Ranked Flex TT')}
 
 
 @cog_i18n(_)
@@ -59,7 +63,8 @@ class LeagueOfLegends(commands.Cog):
             "region": "",
             "account_id": "",
             "puuid": "",
-            "summoner_id": ""
+            "summoner_id": "",
+            "last_updated": ""
         }
         self.config.register_guild(**default_guild)
         self.config.register_user(**default_user)
@@ -70,8 +75,6 @@ class LeagueOfLegends(commands.Cog):
     def cog_unload(self):
         self.leaderboard_update_job.cancel()
         self.session.detach()
-
-
 
     @tasks.loop(hours=1.0)
     async def leaderboard_update_job(self):
@@ -137,8 +140,11 @@ class LeagueOfLegends(commands.Cog):
                     ranked_info = lol.league.by_summoner(config['region'], summoner_id)
 
                     for i, v in enumerate(ranked_info):
-                        ranked_info[i]['tier_int'] = tiers_order[ranked_info[i]['tier']]
-                        ranked_info[i]['rank_int'] = ranks_order[ranked_info[i]['rank']]
+                        try:
+                            ranked_info[i]['tier_int'] = tiers_order[ranked_info[i]['tier']]
+                            ranked_info[i]['rank_int'] = ranks_order[ranked_info[i]['rank']]
+                        except KeyError:
+                            continue
 
                     ranked_infos[user_id] = ranked_info
                     break
@@ -180,36 +186,38 @@ class LeagueOfLegends(commands.Cog):
                         del guild_summoners[user_id]
                 except discord.errors.NotFound:
                     del guild_summoners[user_id]
-            print(channel_id)
             channel = await self.bot.fetch_channel(channel_id)
             embed_colour = await self.bot.get_embed_color(channel)
             for message_id in current_messages:
                 try:
                     await channel.delete_messages([channel.get_partial_message(message_id=message_id)])
-                except DiscordNotFoundError:
-                    log.exception("Can't delete message from text channel, cause message or channel or guild not found!", exc_info=DiscordNotFoundError)
-                except Exception:
-                    log.exception("Can't delete message from text channel (maybe no permission?)", exc_info=Exception)
+                except discord.errors.NotFound as r:
+                    log.exception("Can't delete message from text channel, cause message or channel or guild not found!", exc_info=r)
+                except Exception as r:
+                    log.exception("Can't delete message from text channel (maybe no permission?)", exc_info=r)
 
             if len(guild_summoners) == 0:
                 continue
 
-            queues = ['RANKED_SOLO_5x5', 'RANKED_FLEX_SR']
+            queues = ['RANKED_SOLO_5x5', 'RANKED_FLEX_SR', 'RANKED_FLEX_TT']
+
             current_messages = []
 
             for queue in queues:
-                embed = Embed(title=_("Leaderboard for {queue} queue").format(queue=queue), colour=embed_colour)
+                embed = Embed(title=_("Leaderboard for {queue} queue").format(queue=queues_nicenames[queue]),
+                              colour=embed_colour)
 
                 queue_summoners = []
 
                 for guild_summoner in guild_summoners.keys():
                     for q in guild_summoners[guild_summoner]:
-                        if q['queueType'] == queue:
+                        if q['queueType'] == queue and 'tier_int' in q and 'rank_int' in q and 'leaguePoints' in q:
                             qu = q.copy()
                             qu['discord_id'] = guild_summoner
                             queue_summoners.append(qu)
 
-                queue_summoners = sorted(queue_summoners.copy(), key=lambda k: (k['tier_int'], k['rank_int']))
+                queue_summoners = sorted(queue_summoners.copy(), key=lambda k: (k['tier_int'], k['rank_int'],
+                                                                                k['leaguePoints']))
 
                 for i in range(20):
                     try:
@@ -448,51 +456,56 @@ class LeagueOfLegends(commands.Cog):
 
             await ctx.send(embed=embed)
             return
+        versions = lol.data_dragon.versions_for_region(region)
 
         for info in rankedInfo:
-            embed = Embed(
-                title=_("Statistics for {queue_type}").format(queue_type=info["queueType"]),
-                colour=await ctx.embed_colour()
-            )
-            embed.set_author(name=summoner["name"])
-            embed.set_thumbnail(
-                url="https://nukdotcom.ru/wp-content/uploads/2021/07/" + info["tier"] + ".png"
-            )
-            embed.add_field(name=_("Tier"), value=info["tier"], inline=True)
-            embed.add_field(name=_("Rank"), value=info["rank"], inline=True)
-            embed.add_field(name=_("League points"), value=str(info["leaguePoints"]), inline=True)
-            embed.add_field(name=_("Wins"), value=str(info["wins"]), inline=True)
-            embed.add_field(name=_("Losses"), value=str(info["losses"]), inline=True)
-            winrate = float(info["wins"] / (info["wins"] + info["losses"])) * 100
-            embed.add_field(name=_("Winrate"), value=humanize_number(winrate, await self.getLocale(ctx)) + "%")
+            try:
+                embed = Embed(
+                    title=_("Statistics for {queue_type}").format(queue_type=info["queueType"]),
+                    colour=await ctx.embed_colour()
+                )
+                embed.set_author(name=summoner["name"])
 
-            statuses = [
-                {'name': "veteran", 'nice': _("Veteran")},
-                {'name': "inactive", 'nice': _("Inactive")},
-                {'name': "freshBlood", 'nice': _("Fresh Blood")},
-                {'name': "hotStreak", 'nice': _("Hot Streak")}
-            ]
-            statusesToDisplay = []
-            for status in statuses:
-                if info[status['name']] is True:
-                    statusesToDisplay.append(status['nice'])
+                embed.set_thumbnail(
+                    url="https://nukdotcom.ru/wp-content/uploads/2021/07/" + info["tier"] + ".png"
+                )
+                embed.add_field(name=_("Tier"), value=info["tier"], inline=True)
+                embed.add_field(name=_("Rank"), value=info["rank"], inline=True)
+                embed.add_field(name=_("League points"), value=str(info["leaguePoints"]), inline=True)
+                embed.add_field(name=_("Wins"), value=str(info["wins"]), inline=True)
+                embed.add_field(name=_("Losses"), value=str(info["losses"]), inline=True)
+                winrate = float(info["wins"] / (info["wins"] + info["losses"])) * 100
+                embed.add_field(name=_("Winrate"), value=humanize_number(winrate, await self.getLocale(ctx)) + "%")
 
-            statuses_str = ""
+                statuses = [
+                    {'name': "veteran", 'nice': _("Veteran")},
+                    {'name': "inactive", 'nice': _("Inactive")},
+                    {'name': "freshBlood", 'nice': _("Fresh Blood")},
+                    {'name': "hotStreak", 'nice': _("Hot Streak")}
+                ]
+                statusesToDisplay = []
+                for status in statuses:
+                    if info[status['name']] is True:
+                        statusesToDisplay.append(status['nice'])
 
-            i = 0
-            while i <= len(statusesToDisplay) - 2:
-                statuses_str += statusesToDisplay[i]
-                statuses_str += ", "
-                i += 1
+                statuses_str = ""
 
-            if len(statusesToDisplay) > 0:
-                statuses_str += statusesToDisplay[len(statusesToDisplay) - 1]
-            else:
-                statuses_str = "-"
+                i = 0
+                while i <= len(statusesToDisplay) - 2:
+                    statuses_str += statusesToDisplay[i]
+                    statuses_str += ", "
+                    i += 1
 
-            embed.add_field(name=_("Status"), value=statuses_str, inline=True)
+                if len(statusesToDisplay) > 0:
+                    statuses_str += statusesToDisplay[len(statusesToDisplay) - 1]
+                else:
+                    statuses_str = "-"
 
-            await ctx.send(embed=embed)
+                embed.add_field(name=_("Status"), value=statuses_str, inline=True)
+
+                await ctx.send(embed=embed)
+            except Exception:
+                continue
 
     @lol.command()
     @commands.guild_only()

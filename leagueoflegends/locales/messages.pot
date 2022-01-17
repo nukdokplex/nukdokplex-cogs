@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-07-16 04:47+0500\n"
+"POT-Creation-Date: 2022-01-17 14:09+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,253 +11,265 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
 
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:41
+msgid "Ranked Solo 5 vs. 5"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:42
+msgid "Ranked Flex SR"
+msgstr ""
+
 #: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:43
+msgid "Ranked Flex TT"
+msgstr ""
+
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:48
 #, docstring
 msgid "LeagueOfLegends API related commands."
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:194
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:207
 msgid "Leaderboard for {queue} queue"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:227
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:245
 msgid ""
 "Error! League Of Legends ``api_key`` is not provided! Set it by ``[p]set api"
 " leagueoflegends api_key,[YOUR API TOKEN]``."
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:233
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:251
 #, docstring
 msgid "League of Legends related commands"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:240
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:258
 #, docstring
 msgid "Resets the League of Legends app cache"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:249
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:267
 msgid "The League of Legends app cache was successfully reset!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:253
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:271
 #, docstring
 msgid "Sets the \"Summoner name\" for the user"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:255
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:273
 msgid "Send a proper ``Summoner name``"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:264
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:315
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:501
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:282
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:333
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:524
 msgid "Time is out. Cancelled."
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:270
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:288
 msgid "Your name is set as \"{name}\""
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:277
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:295
 #, docstring
 msgid "Sets the region for the user"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:280
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:298
 msgid "Europe West"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:281
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:299
 msgid "Europe Nordic & East"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:282
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:300
 msgid "North America"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:283
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:301
 msgid "Brazil"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:284
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:302
 msgid "Russia"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:285
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:303
 msgid "Turkey"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:286
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:304
 msgid "Oceania"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:287
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:305
 msgid "Latin America North"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:288
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:306
 msgid "Latin America South"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:289
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:307
 msgid "Japan"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:290
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:308
 msgid "Philippine"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:291
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:309
 msgid "Singapore"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:292
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:310
 msgid "Thailand"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:293
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:311
 msgid "Taiwan"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:294
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:312
 msgid "Vietnam"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:297
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:315
 msgid "Send a proper ``Region code`` e.g.:"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:319
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:337
 msgid "This is not valid ``Region code``!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:330
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:348
 msgid "Your region has been set as ``{region_code}`` ({region_name})"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:336
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:354
 #, docstring
 msgid "Returns stats of provided user"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:342
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:554
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:360
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:577
 msgid ""
 "You did not set a ``Summoner name``! You can do this with this command: "
 "``{prefix}lol setname``"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:351
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:563
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:369
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:586
 msgid ""
 "You did not set a ``Region``! You can do this with this command: "
 "``{prefix}lol setregion``"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:376
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:383
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:392
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:418
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:424
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:433
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:624
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:394
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:401
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:410
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:436
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:442
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:451
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:647
 msgid "Got error while getting summoner's stats!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:377
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:419
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:594
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:659
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:710
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:395
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:437
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:617
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:682
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:733
 msgid "Summoner not found!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:384
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:425
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:600
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:666
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:717
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:402
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:443
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:623
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:689
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:740
 msgid ""
 "Unfortunately, can't get your stats because the Riot API quota was fully "
 "used. The quota will be restored in ``{seconds} seconds``."
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:393
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:434
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:609
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:675
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:726
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:411
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:452
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:632
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:698
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:749
 msgid "Couldn't get your stats because API key expired or cancelled."
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:400
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:418
 msgid "Summoner statistics"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:404
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:422
 msgid "Level"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:406
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:424
 msgid ""
 "League of Legends RED Cog developed by NukDokPlex using RiotWatcher wrapper"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:443
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:463
 msgid "Statistics for {queue_type}"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:450
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:471
 msgid "Tier"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:451
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:472
 msgid "Rank"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:452
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:473
 msgid "League points"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:453
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:474
 msgid "Wins"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:454
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:475
 msgid "Losses"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:456
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:477
 msgid "Winrate"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:459
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:480
 msgid "Veteran"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:460
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:481
 msgid "Inactive"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:461
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:482
 msgid "Fresh Blood"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:462
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:483
 msgid "Hot Streak"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:482
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:503
 msgid "Status"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:490
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:513
 #, docstring
 msgid "Setup League Of Legends leaderboard in server"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:510
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:533
 msgid ""
 "You selected <#{channel}> channel. This channel will now update the "
 "leaderboard every hour with users who have already set their ``Summoner "
@@ -266,125 +278,125 @@ msgid ""
 "leaderboard!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:519
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:542
 #, docstring
 msgid "Enables League Of Legends leaderboard for this guild"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:523
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:546
 msgid "Leaderboard has been enabled for this guild!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:529
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:552
 #, docstring
 msgid "Disables League Of Legends leaderboard for this guild"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:533
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:556
 msgid "Leaderboard has been disabled for this guild!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:538
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:561
 #, docstring
 msgid "Reload all League of Legends leaderboards"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:541
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:564
 msgid ""
 "Leaderboards in all guilds will be reloaded immediately.\n"
 "The next update will take place in one hour."
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:548
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:571
 #, docstring
 msgid "Returns summoner's last match info"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:593
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:599
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:608
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:614
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:616
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:622
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:631
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:637
 msgid "Got error while getting summoner's profile!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:615
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:625
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:682
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:692
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:732
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:742
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:638
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:648
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:705
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:715
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:755
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:765
 msgid "Unexpected error, see logs for details."
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:658
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:665
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:674
 #: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:681
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:691
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:688
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:697
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:704
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:714
 msgid "Got error while getting summoner's last match!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:699
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:722
 msgid "Can't find any match for you... Maybe you didn't play any?"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:709
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:716
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:725
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:731
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:741
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:732
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:739
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:748
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:754
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:764
 msgid "Got error while getting summoner's match info!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:756
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:779
 msgid "Win!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:756
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:779
 msgid "Defeat!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:762
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:785
 msgid "Kills"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:763
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:786
 msgid "Deaths"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:764
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:787
 msgid "Assists"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:765
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:788
 msgid "Position"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:767
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:790
 msgid "Gold spent"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:772
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:795
 msgid "Champion level"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:779
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:802
 msgid "First blood"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:780
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:787
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:803
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:810
 msgid "achieved!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:786
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:809
 msgid "First tower"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:793
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:816
 msgid "Penta Kills!"
 msgstr ""
 
-#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:800
+#: C:\Users\NukDo\PycharmProjects\Red-DiscordBot\nukdokplex-cogs\leagueoflegends\leagueoflegends.py:823
 msgid "Quadra Kills!"
 msgstr ""
