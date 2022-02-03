@@ -3,7 +3,7 @@
     "description" : "Simply forces nickname for user by command. When users are trying to change their nickname, it simply overwrite it to set before.",
     "disabled" : false,
     "short" : "Simply forces nickname for user by command",
-    "name" : "Nickname Forcer",
-    "tags" : ["league", "of", "legends", "leagueoflegends", "lol", "statistics", "leaderboard", "riot", "riotgames"],
-    "install_msg" : "Installed successfuly!\nTo set Riot API key use command ``[p]set api leagueoflegends api_key,[YOUR_API_KEY]``.\nAuthor's website: https://nukdotcom.ru/"
+    "name" : "NicknameForcer",
+    "tags" : ["nickname", "forcer"],
+    "install_msg" : "Installed successfuly!\nAuthor's website: https://nukdotcom.ru/"
 }
