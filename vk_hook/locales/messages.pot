@@ -1,0 +1,126 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2022-06-05 00:47+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:70
+#: nukdokplex-cogs\vk_hook\vk_hook.py:196
+#, docstring
+msgid "VKHook related commands"
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:190
+msgid ""
+"Error! VK ``service_key`` is not provided! Set it by ``[p]set api vk_hook "
+"service_key,[YOUR SERVICE KEY]``."
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:204
+#, docstring
+msgid ""
+"Subscribes the channel to VK wall updates\n"
+"\n"
+"        Example: ``[p]vkhook subscribe <channel> <wall_id>``"
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:217
+msgid ""
+"This channel is already subscribed to updates on this wall. Nothing to do."
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:234
+msgid ""
+"An authorisation error occurred when trying to retrieve the user's information.\n"
+"Set new by ``[p]set api vk_hook service_key,[YOUR SERVICE KEY]``."
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:238
+#: nukdokplex-cogs\vk_hook\vk_hook.py:264
+#: nukdokplex-cogs\vk_hook\vk_hook.py:288
+msgid ""
+"An API error occurred when trying to retrieve user's information. Here is "
+"the information about this error:"
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:240
+#: nukdokplex-cogs\vk_hook\vk_hook.py:266
+#: nukdokplex-cogs\vk_hook\vk_hook.py:290
+msgid ""
+"Error code: {error_code}\n"
+"Error message: \"{error_msg}\""
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:245
+#: nukdokplex-cogs\vk_hook\vk_hook.py:272
+#: nukdokplex-cogs\vk_hook\vk_hook.py:296
+msgid ""
+"An unexpected exception was raised when trying to retrieve user wall "
+"information. Try again later."
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:250
+msgid ""
+"You must give a wall with at least one entry! Post something and try again."
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:259
+#: nukdokplex-cogs\vk_hook\vk_hook.py:283
+msgid ""
+"An authorization error occurred when trying to retrieve the user's information.\n"
+"Set new by ``[p]set api vk_hook service_key,[YOUR SERVICE KEY]``."
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:302
+msgid ""
+"I do not have access to this channel. Please give it to me and try again."
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:308
+msgid "Channel \"{channel}\" has successfully subscribed to updates on this wall!"
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:315
+#, docstring
+msgid ""
+"\n"
+"        Unsubscribes the channel from VK wall updates.\n"
+"        If wall_id is not specified, will unsubscribe from all walls.\n"
+"\n"
+"        Usage: [p]vkhook unsubscribe <channel> [wall_id]\n"
+"        "
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:327
+#: nukdokplex-cogs\vk_hook\vk_hook.py:355
+msgid "Nothing to unsubscribe!"
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:335
+msgid "Successfuly unsubscribed wall ``{wall}`` from channel {channel}"
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:357
+msgid "Successfully unsubscribed wall(s) ``{walls}`` from channel {channel}"
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:363
+#, docstring
+msgid ""
+"\n"
+"        Immediately checks all wall updates. Only for bot's owner!\n"
+"        "
+msgstr ""
+
+#: nukdokplex-cogs\vk_hook\vk_hook.py:368
+msgid ""
+"Walls in all guilds will be reloaded immediately.\n"
+"The next update will take place in three minutes."
+msgstr ""

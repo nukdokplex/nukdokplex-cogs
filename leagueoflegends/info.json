@@ -4,6 +4,8 @@
     "disabled" : false,
     "short" : "League of Legends related commands",
     "name" : "League of Legends",
+    "end_user_data_statement": "This cog stores user data accessible from the Riot Games API, no sensitive data among them. The users also provide their so-called \"Summoner Names\" and the region codes of the game servers that are locked to them.",
     "tags" : ["league", "of", "legends", "leagueoflegends", "lol", "statistics", "leaderboard", "riot", "riotgames"],
-    "install_msg" : "Installed successfuly!\nTo set Riot API key use command ``[p]set api leagueoflegends api_key,[YOUR_API_KEY]``.\nAuthor's website: https://nukdotcom.ru/"
+    "install_msg" : "Installed successfuly!\nTo set Riot API key use command ``[p]set api leagueoflegends api_key,[YOUR_API_KEY]``.\nAuthor's website: https://nukdotcom.ru/",
+    "requirements": ["riotwatcher"]
 }

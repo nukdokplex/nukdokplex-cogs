@@ -4,6 +4,7 @@
     "disabled" : false,
     "short" : "License Info command remover.",
     "name" : "License Info Remover",
+    "end_user_data_statement": "This cog doesn't store any user data.",
     "tags" : ["licenseinfo", "license", "info", "remover"],
     "install_msg" : "Installed successfuly!\nAuthor's website: https://nukdotcom.ru/"
 }

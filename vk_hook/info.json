@@ -1,0 +1,11 @@
+{
+    "author" : ["NukDokPlex"],
+    "description" : "This Cog serves as a webhook for the walls of users and groups in Europe's largest social network, VKonakte (vk.com).",
+    "disabled" : false,
+    "short" : "Webhook for VKontakte (vk.com)",
+    "name" : "VKHook",
+    "tags" : ["vk", "vkontakte", "hook", "webhook", "social", "network", "api"],
+    "requirements": ["vk"],
+    "end_user_data_statement": "This cog is not saving any sensitive user data. Uses only publicly available information and does not assign it to users in Discord, only to channels in Discord.",
+    "install_msg" : "Installed successfuly!\n**Make sure that you have installed VK wrapper before loading: ``[p]pipinstall vk==2.0.2``**.\n\nAuthor's website: https://nukdotcom.ru/"
+}

@@ -1,7 +1,7 @@
 {
     "author" : ["NukDokPlex"],
     "description" : "Simply forces nickname for user by command. When users are trying to change their nickname, it simply overwrite it to set before.",
-    "disabled" : false,
+    "disabled" : true,
     "short" : "Simply forces nickname for user by command",
     "name" : "NicknameForcer",
     "tags" : ["nickname", "forcer"],
