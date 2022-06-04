@@ -52,7 +52,7 @@ Very-very-VERY bad plugin. What it means is that it does a very bad and wrong th
 
 There's no commands for this cog. It starts working as it was loaded.
 
-##nicknameforcer
+## nicknameforcer
 
 Another bad cog that is not working quite right at the moment. It will be fixed in time. Simply forces nickname for user by command.
 
@@ -65,7 +65,7 @@ All commands works only for server admins. Every command starts with ``[p]nickfo
 | `set`               | Sets the user to Nickname Force               |
 | `unset`             | Unsets the user from Nickname Force           |
 
-##vk_hook
+## vk_hook
 
 This Cog serves as a webhook for the walls of users and groups in Europe's largest social network, [VKonakte](https://vk.com/).
 
