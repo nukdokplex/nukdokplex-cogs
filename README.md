@@ -14,7 +14,7 @@ You may be prompted to respond with "I agree" after that.
 
 You can install individual cogs like this:
 ```
-[p]cog install CBD-Cogs [cog]
+[p]cog install nukdokplex-cogs [cog]
 ```
 
 Just replace `[cog]` with the name of the cog you want to install.
