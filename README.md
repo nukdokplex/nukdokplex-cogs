@@ -44,14 +44,6 @@ A prefix is required before each of the above commands: ``[p] lol``
 
 The cog uses [RiotWatcher](https://github.com/pseudonym117/Riot-Watcher) by [pseudonym117](https://github.com/pseudonym117) - a thin wrapper on top of the [Riot Games API for League of Legends](https://developer.riotgames.com/).
 
-## licenseinfo_remover
-
-Very-very-VERY bad plugin. What it means is that it does a very bad and wrong thing: it removes Red's built-in ``licenseinfo`` command. You are very bad person if you use it. Don't use that!
-
-### Commands
-
-There's no commands for this cog. It starts working as it was loaded.
-
 ## nicknameforcer
 
 Another bad cog that is not working quite right at the moment. It will be fixed in time. Simply forces nickname for user by command.
