@@ -1,0 +1,11 @@
+{
+    "author" : ["NukDokPlex"],
+    "description" : "This cog provides access to statistics from the three main osu!-servers: osu!bancho (official), osu!gatari, osu!ripple.",
+    "disabled" : false,
+    "short" : "Statistics from osu! Bancho, Gatari, Ripple.",
+    "name" : "osu_all_servers",
+    "tags" : ["osu", "gatari", "ripple", "bancho", "api"],
+    "requirements": [],
+    "end_user_data_statement": "This cog is not saving any sensitive user data. Uses only publicly available information and does not assign it to users in Discord, only to channels in Discord.",
+    "install_msg" : "Installed successfuly!\n\nAuthor's website: https://nukdotcom.ru/"
+}
